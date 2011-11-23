@@ -23,6 +23,10 @@ section{
     padding: 20px;
 }
 
+section h1{
+    font-size: 200%;
+}
+
 a{
     color: #09c;
     text-decoration: none;
@@ -91,4 +95,17 @@ a.signup_button{
     -moz-border-radius: 10;
     -webkit-border-radius: 10px;
     border-radius: 10px;
+}
+
+/*Footer*/
+footer{
+    text-align: center;
+    margin-top: 10px;
+    width: 710px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer nav{
+    float: none;
 }

@@ -1,4 +1,4 @@
-  require 'spec_helper'
+require 'spec_helper'
 
 describe UsersController do
   render_views
@@ -36,7 +36,7 @@ describe UsersController do
     it "should have the right URL" do
       get :show, :id => @user
       response.should have_selector("td>a", :content => user_path(@user),
-                                            :href    => user_path(@user))
+                                    :href => user_path(@user))
     end
   end
 
@@ -56,7 +56,7 @@ describe UsersController do
 
     describe "failure" do
       before(:each) do
-        @attr = { :name => "", :email => "", :password => "", :password_confirmation => ""}
+        @attr = {:name => "", :email => "", :password => "", :password_confirmation => ""}
       end
 
       it "should have a right title" do
@@ -78,9 +78,9 @@ describe UsersController do
 
     describe "success" do
       before(:each) do
-        @attr = {:name => "Dastan Kojomuratov", :email                 => "dastanko_89@namba.kg",
-                                                :password              => "dastan",
-                                                :password_confirmation => "dastan"}
+        @attr = {:name => "Dastan Kojomuratov", :email => "dastanko_89@namba.kg",
+                 :password => "dastan",
+                 :password_confirmation => "dastan"}
       end
 
       it "should have a welcome message" do
@@ -97,6 +97,11 @@ describe UsersController do
         lambda do
           post :create, :user => @attr
         end.should change(User, :count).by(1)
+      end
+
+      it "should sign the user in" do
+        post :create, :user => @attr
+        controller.should be_signed_in
       end
     end
 

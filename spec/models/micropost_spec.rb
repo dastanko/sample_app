@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Micropost do
   before(:each) do
     @user = Factory(:user)
-    @attr = { :content => "lorem ipsum", :user_id => 1}
+    @attr = {:content => "lorem ipsum"}
   end
 
   it "should create a new instances with valid attributes" do
@@ -23,7 +23,24 @@ describe Micropost do
       @micropost.user_id.should == @user.id
       @micropost.user.should == @user
     end
+
+    describe "validations" do
+
+      it "should have a user id" do
+        Micropost.new(@attr).should_not be_valid
+      end
+
+      it "should have a non-blank content" do
+        @user.microposts.build(:content => "   ").should_not be_valid
+      end
+
+      it "should reject a long content" do
+        @user.microposts.build(:content => "a"*141).should_not be_valid
+      end
+
+    end
   end
+
 end
 
 # == Schema Information

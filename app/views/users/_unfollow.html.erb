@@ -1,6 +1,5 @@
-<%= form_for(current_user.relationships.build(:followed_id => @user.id)) do |f| %>
-    <div><%= f.hidden_field, :followed_id %></div>
+<%= form_for(current_user.relationships.find_by_followed_id(@user.id), :html => {:method => :delete }) do |f| %>
     <div class="actions">
-      <%= f.submit "Follow" %>
+      <%= f.submit "Unfollow" %>
     </div>
 <% end %>

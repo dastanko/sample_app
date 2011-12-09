@@ -1,8 +1,8 @@
-require 'faker'
 
 namespace :db do
   desc "Fill in database with fake users"
   task :populate => :environment do
+    require 'faker'
     Rake::Task['db:reset'].invoke
     make_users
     make_microposts

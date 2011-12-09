@@ -9,7 +9,7 @@ group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'rspec-rails'
   gem 'annotate'
-  gem 'faker'
+  gem 'faker', :require => false
 end
 
 group :test do

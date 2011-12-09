@@ -3,7 +3,6 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 tmp/*
-Gemfile.lock
 doc/api
 doc/app
 *.swp
